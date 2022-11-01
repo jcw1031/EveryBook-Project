@@ -1,7 +1,12 @@
 package jcw.javaTeamProjectServer.repository;
 
+import jcw.javaTeamProjectServer.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public class MemberRepository {
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    public Optional<Member> findByMemberId(String memberId);
 }

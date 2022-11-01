@@ -15,5 +15,12 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemId;
 
-
+    private String itemName;
+    private String itemDescription;
+    private int itemPrice;
+    private String itemAddress;
+    private String itemCategory;
+    private String itemPhone;
+    private String itemImage;
+    private int itemLimitCount;
 }
