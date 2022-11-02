@@ -20,7 +20,7 @@ public class MemberController {
     public void signUp(@RequestBody Member member) {
         log.info("member = {}", member);
         String check = member.getMemberId();
-        Optional<Member> find = memberService.findByMemberId(member.getMemberId());
+        Optional<Member> find = memberService.findByMemberId(check);
         if (find.isPresent()) {
             System.out.println("이미 존재하는 아이디 입니다.");
         } else {
