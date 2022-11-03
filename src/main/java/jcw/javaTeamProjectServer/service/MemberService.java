@@ -18,7 +18,7 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public List<Member> findAll() {
+    public List<Member> memberList() {
         return memberRepository.findAll();
     }
 

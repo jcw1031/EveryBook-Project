@@ -13,11 +13,11 @@ import javax.persistence.Id;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Long reviewKey;
 
     private Long memberId;
     private Long itemId;
-    private int starRating;
-    private String reviewText;
+    private int reviewStar;
+    private String reviewBody;
     private String reviewDate;
 }

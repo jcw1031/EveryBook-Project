@@ -10,13 +10,13 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
-public class Reservation {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservationId;
+    private Long bookKey;
 
-    private Long memberId;
-    private Long itemId;
-    private String reservationDate; //예약 일자
-    private String date; //예약 당시 일자
+    private Long memberKey;
+    private Long itemKey;
+    private String bookDate; //예약 시점 일자
+    private String itemDate; //상품 예약일
 }
