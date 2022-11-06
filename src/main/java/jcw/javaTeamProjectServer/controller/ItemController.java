@@ -4,12 +4,10 @@ import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.service.ItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -18,6 +16,32 @@ public class ItemController {
 
     @Autowired
     ItemService itemService;
+
+    /**
+     * 상품 등록
+     */
+    @PostMapping("/register")
+    public void register(@RequestBody Item item) {
+        Item register = itemService.register(item);
+        log.info("item = {}", register);
+    }
+
+    /**
+     *상품 카테고리별 리스트
+     */
+    @GetMapping("/category/{category}")
+    public List<Item> findByCategory(@PathVariable("category") String category) {
+        return itemService.findByCategory(category);
+    }
+
+    /**
+     * id로 검색
+     */
+    @GetMapping("/id/{id}")
+    public Item findById(@PathVariable("id") Long id) {
+        Optional<Item> item = itemService.findById(id);
+        return item.orElse(null);
+    }
 
     @GetMapping("/list")
     public List<Item> itemList() {
@@ -29,4 +53,6 @@ public class ItemController {
         log.info("name = {}", name);
         return itemService.findByName(name);
     }
+
+
 }

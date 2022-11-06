@@ -1,10 +1,15 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/java_team_project?serverTimezone=UTC
+    url: jdbc:mysql://34.64.47.242:3306/everybook?serverTimezone=UTC
     username: root
-    password: 1234
+    password: 9490
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
 
 #server:
 #  port: 9999
-
