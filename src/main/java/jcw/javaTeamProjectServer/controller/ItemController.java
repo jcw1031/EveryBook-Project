@@ -43,11 +43,18 @@ public class ItemController {
         return item.orElse(null);
     }
 
+    /**
+     * 상품 리스트
+     * @return
+     */
     @GetMapping("/list")
     public List<Item> itemList() {
         return itemService.itemList();
     }
 
+    /**
+     * 이름을 통한 상품 검색
+     */
     @GetMapping("/name/{name}")
     public List<Item> findByName(@PathVariable("name") String name) {
         log.info("name = {}", name);
