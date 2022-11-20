@@ -45,7 +45,6 @@ public class ItemController {
 
     /**
      * 상품 리스트
-     * @return
      */
     @GetMapping("/list")
     public List<Item> itemList() {

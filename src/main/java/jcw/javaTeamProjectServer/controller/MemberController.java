@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/member")
 public class MemberController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class MemberController {
     public Member login(@PathVariable("id") String id, @RequestParam("password") String password) {
         Optional<Member> member = memberService.findByMemberId(id);
         if (member.isPresent()) {
-            if (member.get().getMemberPassword().equals(password)) {
+            if (member.get().getPassword().equals(password)) {
                 log.info("login success!");
                 return member.get();
             } else {
@@ -60,4 +60,8 @@ public class MemberController {
     public List<Member> memberList() {
         return memberService.memberList();
     }
+
+    /**
+     *
+     */
 }

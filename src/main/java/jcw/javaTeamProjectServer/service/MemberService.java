@@ -22,7 +22,7 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findById(Long id) {
+    public Optional<Member> findByMemberId(Long id) {
         return memberRepository.findById(id);
     }
 
