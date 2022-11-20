@@ -18,11 +18,11 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public List<Member> findAll() {
+    public List<Member> memberList() {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findById(Long id) {
+    public Optional<Member> findByMemberId(Long id) {
         return memberRepository.findById(id);
     }
 
