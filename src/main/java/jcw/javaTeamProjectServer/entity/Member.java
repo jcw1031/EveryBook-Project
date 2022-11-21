@@ -12,16 +12,11 @@ import javax.persistence.*;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_key")
-    private Long id;
+    private Long memberId;
 
-    private String memberId;
-    @Column(name = "member_password")
+    private String id;
     private String password;
-    @Column(name = "member_name")
-    private String name;
-    @Column(name = "member_phone")
-    private String phone;
-    @Column(name = "member_age")
+    private String memberName;
+    private String memberPhone;
     private int age;
 }

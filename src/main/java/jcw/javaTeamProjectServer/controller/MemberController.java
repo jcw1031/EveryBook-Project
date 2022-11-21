@@ -23,7 +23,7 @@ public class MemberController {
     @PostMapping("/signup")
     public void signUp(@RequestBody Member member) {
         log.info("member = {}", member);
-        String check = member.getMemberId();
+        String check = member.getId();
         Optional<Member> find = memberService.findByMemberId(check);
         if (find.isPresent()) {
             log.info("이미 존재하는 아이디입니다.");
@@ -61,7 +61,4 @@ public class MemberController {
         return memberService.memberList();
     }
 
-    /**
-     *
-     */
 }
