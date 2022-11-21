@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemKey;
+    private Long itemId;
 
     private String itemName;
     private String itemBody;
@@ -23,6 +23,5 @@ public class Item {
     private String itemAddress;
     private String itemCategory;
     private String itemPhone;
-//    private String itemImage;
-//    private int itemLimitCount;
+    private String itemImage;
 }
