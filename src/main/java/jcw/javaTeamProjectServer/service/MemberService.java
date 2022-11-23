@@ -22,11 +22,11 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findByMemberId(Long id) {
+    public Optional<Member> findById(Long id) {
         return memberRepository.findById(id);
     }
 
-    public Optional<Member> findByMemberId(String memberId) {
-        return memberRepository.findByMemberId(memberId);
+    public Optional<Member> findByMemberId(String loginId) {
+        return memberRepository.findByMemberId(loginId);
     }
 }

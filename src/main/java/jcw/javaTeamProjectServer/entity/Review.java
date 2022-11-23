@@ -15,10 +15,10 @@ import javax.persistence.Id;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Long reviewKey;
 
-    private Long memberId;
-    private Long itemId;
+    private Long memberKey;
+    private Long itemKey;
     private int reviewStar;
     private String reviewBody;
     private String reviewDate;

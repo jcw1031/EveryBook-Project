@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/user")
 public class MemberController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class MemberController {
     @PostMapping("/signup")
     public void signUp(@RequestBody Member member) {
         log.info("member = {}", member);
-        String check = member.getId();
+        String check = member.getMemberId();
         Optional<Member> find = memberService.findByMemberId(check);
         if (find.isPresent()) {
             log.info("이미 존재하는 아이디입니다.");
@@ -40,7 +40,7 @@ public class MemberController {
     public Member login(@PathVariable("id") String id, @RequestParam("password") String password) {
         Optional<Member> member = memberService.findByMemberId(id);
         if (member.isPresent()) {
-            if (member.get().getPassword().equals(password)) {
+            if (member.get().getMemberPassword().equals(password)) {
                 log.info("login success!");
                 return member.get();
             } else {
@@ -56,7 +56,7 @@ public class MemberController {
     /**
      * 회원 리스트
      */
-    @GetMapping("/search/all")
+    @GetMapping("/list")
     public List<Member> memberList() {
         return memberService.memberList();
     }

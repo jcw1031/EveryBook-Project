@@ -12,11 +12,11 @@ import javax.persistence.*;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long memberKey;
 
-    private String id;
-    private String password;
+    private String memberId;
+    private String memberPassword;
     private String memberName;
     private String memberPhone;
-    private int age;
+    private int memberAge;
 }

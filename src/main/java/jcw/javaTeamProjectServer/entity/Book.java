@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookId;
+    private Long bookKey;
 
     private Long memberKey;
     private Long itemKey;
