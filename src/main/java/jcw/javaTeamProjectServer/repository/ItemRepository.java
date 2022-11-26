@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-    public List<Item> findByItemNameContainingIgnoreCase(String itemName);
+    List<Item> findByItemNameContainingIgnoreCase(String itemName);
 
-    public List<Item> findByItemCategory(String category);
+    List<Item> findByItemCategory(String category);
 }
