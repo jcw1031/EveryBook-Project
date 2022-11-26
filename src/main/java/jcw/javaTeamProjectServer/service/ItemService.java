@@ -2,6 +2,7 @@ package jcw.javaTeamProjectServer.service;
 
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.repository.ItemRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ItemService {
 
-    @Autowired
-    ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public Item register(Item item) {
         return itemRepository.save(item);

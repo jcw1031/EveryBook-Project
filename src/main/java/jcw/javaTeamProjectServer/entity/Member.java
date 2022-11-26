@@ -1,5 +1,6 @@
 package jcw.javaTeamProjectServer.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,4 +20,17 @@ public class Member {
     private String memberName;
     private String memberPhone;
     private int memberAge;
+
+    public Member(Long memberKey, String memberId, String memberPassword, String memberName, String memberPhone, int memberAge) {
+        this.memberKey = memberKey;
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberAge = memberAge;
+    }
+
+    public Member() {
+
+    }
 }
