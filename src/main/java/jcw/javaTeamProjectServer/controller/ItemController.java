@@ -1,11 +1,11 @@
 package jcw.javaTeamProjectServer.controller;
 
+import jcw.javaTeamProjectServer.dto.ItemListDto;
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.util.UriEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +13,10 @@ import java.util.Optional;
 @RestController
 @Slf4j
 @RequestMapping("/item")
+@RequiredArgsConstructor
 public class ItemController {
 
-    @Autowired
-    ItemService itemService;
+    private final ItemService itemService;
 
     /**
      * 상품 등록
@@ -28,10 +28,11 @@ public class ItemController {
     }
 
     /**
-     *상품 카테고리별 리스트
+     * 상품 카테고리별 리스트
      */
     @GetMapping("/category/{category}")
-    public List<Item> findByCategory(@PathVariable("category") String category) {
+    public List<ItemListDto> findByCategory(@PathVariable("category") String category) {
+        log.info("category");
         return itemService.findByCategory(category);
     }
 
@@ -48,7 +49,7 @@ public class ItemController {
      * 상품 리스트
      */
     @GetMapping("/list")
-    public List<Item> itemList() {
+    public List<ItemListDto> itemList() {
         return itemService.itemList();
     }
 
@@ -60,6 +61,5 @@ public class ItemController {
         log.info("name = {}", name);
         return itemService.findByName(name);
     }
-
 
 }

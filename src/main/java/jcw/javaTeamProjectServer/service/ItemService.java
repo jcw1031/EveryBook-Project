@@ -1,9 +1,9 @@
 package jcw.javaTeamProjectServer.service;
 
+import jcw.javaTeamProjectServer.dto.ItemListDto;
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,19 +19,20 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public List<Item> itemList() {
-        return itemRepository.findAll();
+    public List<ItemListDto> itemList() {
+        return itemRepository.findAllDto();
     }
 
     public List<Item> findByName(String name) {
         return itemRepository.findByItemNameContainingIgnoreCase(name);
     }
 
-    public List<Item> findByCategory(String category) {
+    public List<ItemListDto> findByCategory(String category) {
         return itemRepository.findByItemCategory(category);
     }
 
     public Optional<Item> findById(Long id) {
         return itemRepository.findById(id);
     }
+
 }
