@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +22,11 @@ public class BookService {
 
     public List<Book> findByMemberId(Long memberId) {
         return bookRepository.findByMemberKey(memberId);
+    }
+
+    public void bookDelete(Long bookKey) {
+        Optional<Book> optionalBook = bookRepository.findById(bookKey);
+        bookRepository.delete(optionalBook.get());
     }
 
 }
