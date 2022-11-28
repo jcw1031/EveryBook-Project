@@ -24,9 +24,14 @@ public class BookController {
         log.info("Book = {}", save);
     }
 
-    @GetMapping("/list/{memberId}")
-    public List<Book> bookList(@PathVariable("memberId") Long memberId) {
-        return bookService.findByMemberId(memberId);
+    @GetMapping("/list/{id}")
+    public List<Book> bookList(@PathVariable("id") Long memberKey) {
+        return bookService.findByMemberId(memberKey);
+    }
+
+    @DeleteMapping("/{id}")
+    public void bookCancel(@PathVariable("id") Long bookKey) {
+        bookService.bookDelete(bookKey);
     }
 
 }
