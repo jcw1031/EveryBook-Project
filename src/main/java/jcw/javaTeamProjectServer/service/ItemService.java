@@ -23,8 +23,8 @@ public class ItemService {
         return itemRepository.findAllDto();
     }
 
-    public List<Item> findByName(String name) {
-        return itemRepository.findByItemNameContainingIgnoreCase(name);
+    public List<ItemListDto> findByName(String name) {
+        return itemRepository.findByItemName(name);
     }
 
     public List<ItemListDto> findByCategory(String category) {

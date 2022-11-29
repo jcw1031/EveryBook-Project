@@ -39,7 +39,7 @@ public class ItemController {
     /**
      * id로 검색
      */
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public Item findById(@PathVariable("id") Long id) {
         Optional<Item> item = itemService.findById(id);
         return item.orElse(null);
@@ -57,7 +57,7 @@ public class ItemController {
      * 이름을 통한 상품 검색
      */
     @GetMapping("/name/{name}")
-    public List<Item> findByName(@PathVariable("name") String name) {
+    public List<ItemListDto> findByName(@PathVariable("name") String name) {
         log.info("name = {}", name);
         return itemService.findByName(name);
     }
