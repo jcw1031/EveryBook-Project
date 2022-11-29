@@ -23,4 +23,6 @@ public class Item {
     private String itemAddress;
     private String itemCategory;
     private String itemPhone;
+    private double avgRating;
+
 }

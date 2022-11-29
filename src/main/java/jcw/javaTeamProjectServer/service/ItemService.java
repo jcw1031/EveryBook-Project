@@ -1,8 +1,10 @@
 package jcw.javaTeamProjectServer.service;
 
 import jcw.javaTeamProjectServer.dto.ItemListDto;
+import jcw.javaTeamProjectServer.dto.UpdateAvgRatingDto;
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.repository.ItemRepository;
+import jcw.javaTeamProjectServer.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final ReviewService reviewService;
 
     public Item register(Item item) {
         return itemRepository.save(item);
@@ -35,4 +38,10 @@ public class ItemService {
         return itemRepository.findById(id);
     }
 
+    public void updateAvgRating(UpdateAvgRatingDto avgRatingDto) {
+        Optional<Item> optionalItem = itemRepository.findById(avgRatingDto.getItemKey());
+        Item item = optionalItem.get();
+        item.setAvgRating(avgRatingDto.getAvgRating());
+        itemRepository.save(item);
+    }
 }
