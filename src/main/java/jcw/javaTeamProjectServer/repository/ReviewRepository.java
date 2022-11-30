@@ -12,7 +12,8 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    @Query(value = "SELECT r.reviewKey, r.reviewBody, r.reviewStar, r.reviewDate, m.memberName " +
+    @Query(value = "SELECT new jcw.javaTeamProjectServer.dto.ReviewListDto" +
+            "(r.reviewKey, r.reviewBody, r.reviewStar, r.reviewDate, m.memberName) " +
             "FROM Review r, Member m " +
             "WHERE r.memberKey = m.memberKey")
     List<ReviewListDto> findByItemKey(Long itemKey);
