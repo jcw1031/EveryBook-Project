@@ -43,9 +43,10 @@ public class ReviewService {
         Optional<Review> optionalReview = reviewRepository.findById(reviewKey);
         if (optionalReview.isPresent()) {
             Review review = optionalReview.get();
+            Long itemKey = review.getItemKey();
             reviewRepository.delete(review);
             log.info("review 삭제 성공");
-            UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(review.getItemKey()
+            UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(itemKey
                     , reviewRepository.avgRating(review.getItemKey()));
             itemService.updateAvgRating(avgRatingDto);
         } else {
