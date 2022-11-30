@@ -11,5 +11,5 @@ import lombok.ToString;
 @NoArgsConstructor
 public class UpdateAvgRatingDto {
     private Long itemKey;
-    private double avgRating;
+    private Double avgRating;
 }
