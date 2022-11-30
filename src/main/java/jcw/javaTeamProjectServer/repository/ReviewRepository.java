@@ -13,10 +13,10 @@ import java.util.List;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @Query(value = "SELECT new jcw.javaTeamProjectServer.dto.ReviewListDto" +
-            "(r.reviewKey, r.reviewBody, r.reviewStar, r.reviewDate, m.memberName) " +
+            "(r.reviewKey, r.reviewBody, r.reviewStar, r.reviewDate, m.memberName, r.memberKey) " +
             "FROM Review r, Member m " +
-            "WHERE r.memberKey = m.memberKey")
-    List<ReviewListDto> findByItemKey(Long itemKey);
+            "WHERE r.memberKey = m.memberKey AND r.itemKey = :itemKey")
+    List<ReviewListDto> findByItemKey(@Param("itemKey") Long itemKey);
 
     @Query(value = "SELECT AVG(r.reviewStar) FROM Review r WHERE r.itemKey = :itemKey GROUP BY r.itemKey")
     double avgRating(@Param("itemKey") Long itemKey);

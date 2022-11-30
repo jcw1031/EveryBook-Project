@@ -13,4 +13,5 @@ public class ReviewListDto {
     private int reviewStar;
     private String reviewDate;
     private String memberName;
+    private Long memberKey;
 }
