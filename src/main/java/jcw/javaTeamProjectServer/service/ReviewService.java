@@ -48,6 +48,9 @@ public class ReviewService {
             log.info("review 삭제 성공");
             UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(itemKey
                     , reviewRepository.avgRating(itemKey));
+            if (avgRatingDto.getAvgRating() == null) {
+                avgRatingDto.setAvgRating(0.0);
+            }
             itemService.updateAvgRating(avgRatingDto);
         } else {
             log.info("삭제 불가");
