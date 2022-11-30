@@ -18,6 +18,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "WHERE r.memberKey = m.memberKey AND r.itemKey = :itemKey")
     List<ReviewListDto> findByItemKey(@Param("itemKey") Long itemKey);
 
-    @Query(value = "SELECT AVG(r.reviewStar) FROM Review r WHERE r.itemKey = :itemKey GROUP BY r.itemKey")
+    @Query(value = "SELECT NULLIF(AVG(r.reviewStar), 0) FROM Review r WHERE r.itemKey = :itemKey GROUP BY r.itemKey")
     double avgRating(@Param("itemKey") Long itemKey);
 }

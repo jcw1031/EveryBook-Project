@@ -45,6 +45,9 @@ public class ReviewService {
             Review review = optionalReview.get();
             reviewRepository.delete(review);
             log.info("review 삭제 성공");
+            UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(review.getItemKey()
+                    , reviewRepository.avgRating(review.getItemKey()));
+            itemService.updateAvgRating(avgRatingDto);
         } else {
             log.info("삭제 불가");
             throw new IllegalArgumentException("삭제 실패");

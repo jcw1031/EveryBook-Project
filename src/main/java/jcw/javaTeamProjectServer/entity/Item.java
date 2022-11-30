@@ -24,5 +24,5 @@ public class Item {
     private String itemCategory;
     private String itemPhone;
     private double avgRating;
-
+    private String itemImage;
 }

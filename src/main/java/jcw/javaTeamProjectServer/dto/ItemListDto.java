@@ -14,4 +14,5 @@ public class ItemListDto {
     private String itemAddress;
     private int itemPrice;
     private Double avgRating;
+    private String itemImage;
 }

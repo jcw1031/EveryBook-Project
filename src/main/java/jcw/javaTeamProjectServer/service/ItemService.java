@@ -23,7 +23,6 @@ public class ItemService {
     }
 
     public List<ItemListDto> itemList() {
-//        return itemRepository.findAllDto();
         List<Item> list = itemRepository.findAll();
         List<ItemListDto> dtoList = new ArrayList<>();
         for (Item item : list) {
@@ -60,6 +59,7 @@ public class ItemService {
         Optional<Item> optionalItem = itemRepository.findById(avgRatingDto.getItemKey());
         Item item = optionalItem.get();
         item.setAvgRating(avgRatingDto.getAvgRating());
+        System.out.println(avgRatingDto.getAvgRating()+";너ㅏㅣㅇ러ㅏㅣㅁㄴ디ㅏㅁ퍼ㅗㄴ어ㅏㅗ롬ㄴㄷㅍㄱ러몮엃ㄴㅁㅎ덯ㄹ머ㅗㄴㅇ롲ㅎㅁ도ㅓㅁㄴㅇㅎ");
         itemRepository.save(item);
     }
 
