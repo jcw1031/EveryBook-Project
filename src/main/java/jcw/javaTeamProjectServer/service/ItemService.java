@@ -74,7 +74,7 @@ public class ItemService {
                 .itemPrice(item.getItemPrice())
                 .itemCategory(item.getItemCategory())
                 .avgRating(item.getAvgRating())
+                .itemImage(item.getItemImage())
                 .build();
-
     }
 }
