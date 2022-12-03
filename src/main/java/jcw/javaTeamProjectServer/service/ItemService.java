@@ -18,7 +18,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public Item register(Item item) {
+    public Item register(final Item item) {
         return itemRepository.save(item);
     }
 
@@ -31,7 +31,7 @@ public class ItemService {
         return dtoList;
     }
 
-    public List<ItemListDto> findByName(String name) {
+    public List<ItemListDto> findByName(final String name) {
         List<Item> list = itemRepository.findByItemNameContainingIgnoreCase(name);
         List<ItemListDto> dtoList = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class ItemService {
         return dtoList;
     }
 
-    public List<ItemListDto> findByCategory(String category) {
+    public List<ItemListDto> findByCategory(final String category) {
         List<Item> list = itemRepository.findByItemCategory(category);
         List<ItemListDto> dtoList = new ArrayList<>();
 
@@ -51,22 +51,21 @@ public class ItemService {
         return dtoList;
     }
 
-    public Optional<Item> findById(Long id) {
+    public Optional<Item> findById(final Long id) {
         return itemRepository.findById(id);
     }
 
-    public void updateAvgRating(UpdateAvgRatingDto avgRatingDto) {
+    public void updateAvgRating(final UpdateAvgRatingDto avgRatingDto) {
         Optional<Item> optionalItem = itemRepository.findById(avgRatingDto.getItemKey());
         Item item = optionalItem.get();
         item.setAvgRating(avgRatingDto.getAvgRating());
-        System.out.println(avgRatingDto.getAvgRating()+";너ㅏㅣㅇ러ㅏㅣㅁㄴ디ㅏㅁ퍼ㅗㄴ어ㅏㅗ롬ㄴㄷㅍㄱ러몮엃ㄴㅁㅎ덯ㄹ머ㅗㄴㅇ롲ㅎㅁ도ㅓㅁㄴㅇㅎ");
         itemRepository.save(item);
     }
 
     /**
      * Item -> ItemListDto
      */
-    ItemListDto convertDto(Item item) {
+    ItemListDto convertDto(final Item item) {
         return ItemListDto.builder()
                 .itemKey(item.getItemKey())
                 .itemName(item.getItemName())

@@ -22,7 +22,7 @@ public class ItemController {
      * 상품 등록
      */
     @PostMapping("/register")
-    public void register(@RequestBody Item item) {
+    public void register(@RequestBody final Item item) {
         Item register = itemService.register(item);
         log.info("item = {}", register);
     }
@@ -31,7 +31,7 @@ public class ItemController {
      * 상품 카테고리별 리스트
      */
     @GetMapping("/category/{category}")
-    public List<ItemListDto> findByCategory(@PathVariable("category") String category) {
+    public List<ItemListDto> findByCategory(@PathVariable("category") final String category) {
         log.info("category");
         return itemService.findByCategory(category);
     }
@@ -40,7 +40,7 @@ public class ItemController {
      * id로 검색
      */
     @GetMapping("/{id}")
-    public Item findById(@PathVariable("id") Long id) {
+    public Item findById(@PathVariable("id") final Long id) {
         Optional<Item> item = itemService.findById(id);
         return item.orElse(null);
     }
@@ -57,7 +57,7 @@ public class ItemController {
      * 이름을 통한 상품 검색
      */
     @GetMapping("/name/{name}")
-    public List<ItemListDto> findByName(@PathVariable("name") String name) {
+    public List<ItemListDto> findByName(@PathVariable("name") final String name) {
         log.info("name = {}", name);
         return itemService.findByName(name);
     }

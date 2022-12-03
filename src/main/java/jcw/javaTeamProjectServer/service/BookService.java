@@ -16,15 +16,15 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public Book booking(Book book) {
+    public Book booking(final Book book) {
         return bookRepository.save(book);
     }
 
-    public List<Book> findByMemberId(Long memberId) {
+    public List<Book> findByMemberId(final Long memberId) {
         return bookRepository.findByMemberKey(memberId);
     }
 
-    public void bookDelete(Long bookKey) {
+    public void bookDelete(final Long bookKey) {
         Optional<Book> optionalBook = bookRepository.findById(bookKey);
         bookRepository.delete(optionalBook.get());
     }

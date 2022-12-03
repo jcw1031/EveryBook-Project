@@ -26,7 +26,7 @@ public class ReviewService {
      * @param review
      */
     @Transactional
-    public void write(Review review) {
+    public void write(final Review review) {
         review.setReviewDate(LocalDate.now().toString());
         reviewRepository.save(review);
         UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(review.getItemKey()
@@ -38,8 +38,12 @@ public class ReviewService {
         return reviewRepository.findByItemKey(itemKey);
     }
 
+    /**
+     * 리뷰 삭제 (해당 item 평균 리뷰 점수 업데이트)
+     * @param reviewKey
+     */
     @Transactional
-    public void delete(Long reviewKey) {
+    public void delete(final Long reviewKey) {
         Optional<Review> optionalReview = reviewRepository.findById(reviewKey);
         if (optionalReview.isPresent()) {
             Review review = optionalReview.get();
