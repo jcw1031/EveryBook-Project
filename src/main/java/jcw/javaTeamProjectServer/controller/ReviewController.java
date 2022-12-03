@@ -1,5 +1,6 @@
 package jcw.javaTeamProjectServer.controller;
 
+import jcw.javaTeamProjectServer.dto.ReviewListDto;
 import jcw.javaTeamProjectServer.entity.Review;
 import jcw.javaTeamProjectServer.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,17 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping("")
-    public void writeReview(@RequestBody Review review) {
+    public void writeReview(@RequestBody final Review review) {
         reviewService.write(review);
     }
 
     @GetMapping("/item/{item}")
-    public List<Review> reviewByItem(@PathVariable("item") Long itemKey) {
+    public List<ReviewListDto> reviewByItem(@PathVariable("item") final Long itemKey) {
         return reviewService.reviewListByItem(itemKey);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteReview(@PathVariable("id") final Long id) {
+        reviewService.delete(id);
     }
 }

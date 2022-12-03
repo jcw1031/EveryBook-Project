@@ -2,6 +2,7 @@ package jcw.javaTeamProjectServer.controller;
 
 import jcw.javaTeamProjectServer.entity.Member;
 import jcw.javaTeamProjectServer.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,16 +13,16 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class MemberController {
 
-    @Autowired
-    MemberService memberService;
+    private final MemberService memberService;
 
     /**
      * 회원가입
      */
     @PostMapping("/signup")
-    public void signUp(@RequestBody Member member) {
+    public void signUp(@RequestBody final Member member) {
         memberService.join(member);
     }
 
@@ -29,7 +30,7 @@ public class MemberController {
      * 로그인
      */
     @GetMapping("/{id}")
-    public Member login(@PathVariable("id") String id, @RequestParam("password") String password) {
+    public Member login(@PathVariable("id") final String id, @RequestParam("password") final String password) {
         Optional<Member> member = memberService.findByMemberId(id);
         if (member.isPresent()) {
             if (member.get().getMemberPassword().equals(password)) {

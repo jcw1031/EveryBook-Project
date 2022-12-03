@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    public List<Book> findByMemberKey(Long memberId);
+    public List<Book> findByMemberKey(final Long memberId);
 
 }
