@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-    List<Item> findByItemNameContainingIgnoreCase(String name);
+    List<Item> findByItemNameContainingIgnoreCase(final String name);
 
-    List<Item> findByItemCategory(String category);
+    List<Item> findByItemCategory(final String category);
 
     /*@Query(value = "SELECT new jcw.javaTeamProjectServer.dto.ItemListDto(i.itemKey, i.itemName, i.itemCategory" +
             ", i.itemAddress, i.itemPrice, COALESCE(AVG(r.reviewStar), 0)) " +
