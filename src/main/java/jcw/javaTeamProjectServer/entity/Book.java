@@ -21,4 +21,5 @@ public class Book {
     private Long itemKey;
     private String bookDate; //예약 시점 일자
     private String itemDate; //상품 예약일
+    private int bookPrice;
 }
