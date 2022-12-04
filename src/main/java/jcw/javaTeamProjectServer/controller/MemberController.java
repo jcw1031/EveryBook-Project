@@ -30,7 +30,7 @@ public class MemberController {
     /**
      * 로그인
      */
-    @GetMapping("/{id}")
+    @GetMapping("/signin/{id}")
     public Member login(@PathVariable("id") final String id, @RequestParam("password") final String password) {
         Optional<Member> member = memberService.findByMemberId(id);
         if (member.isPresent()) {
@@ -55,5 +55,13 @@ public class MemberController {
         return memberService.memberList();
     }
 
-
+    @GetMapping("/{id}")
+    public Member findMember(@PathVariable("id") Long memberKey) {
+        Optional<Member> optionalMember = memberService.findById(memberKey);
+        if (optionalMember.isPresent()) {
+            return optionalMember.get();
+        } else {
+            throw new IllegalArgumentException("존재하지 않는 회원입니다.");
+        }
+    }
 }

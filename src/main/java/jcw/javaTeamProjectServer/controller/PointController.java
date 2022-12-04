@@ -22,7 +22,7 @@ public class PointController {
 
     @PutMapping("/use")
     public void usePoint(@RequestBody PointDto pointDto) {
-        pointDto.setUse();
+        pointDto.reducePoint();
         memberService.updatePoint(pointDto);
     }
 }

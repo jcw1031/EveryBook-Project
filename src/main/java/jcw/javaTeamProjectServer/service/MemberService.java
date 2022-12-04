@@ -46,6 +46,10 @@ public class MemberService {
         return memberRepository.findByMemberId(loginId);
     }
 
+    public Optional<Member> findById(final Long memberKey) {
+        return memberRepository.findById(memberKey);
+    }
+
     /**
      *
      * @param pointDto

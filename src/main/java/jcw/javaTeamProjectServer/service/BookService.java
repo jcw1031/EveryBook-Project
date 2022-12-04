@@ -35,6 +35,18 @@ public class BookService {
 
     public void bookDelete(final Long bookKey) {
         Optional<Book> optionalBook = bookRepository.findById(bookKey);
-        bookRepository.delete(optionalBook.get());
+        if (optionalBook.isPresent()) {
+            Book book = optionalBook.get();
+            int bookPrice = book.getBookPrice();
+            bookRepository.delete(book);
+
+            PointDto pointDto = PointDto.builder()
+                    .memberKey(book.getMemberKey())
+                    .point((int) (bookPrice * 0.05))
+                    .build();
+            pointDto.reducePoint();
+
+            memberService.updatePoint(pointDto);
+        }
     }
 }

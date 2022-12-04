@@ -15,7 +15,7 @@ public class PointDto {
         this.point = point;
     }
 
-    public void setUse() {
+    public void reducePoint() {
         if (this.point > 0) {
             this.point = -this.point;
         }
