@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @NoArgsConstructor
-@DynamicUpdate
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +30,10 @@ public class Member {
         this.memberName = memberName;
         this.memberPhone = memberPhone;
         this.memberAge = memberAge;
+        this.memberPoint = memberPoint;
+    }
+
+    public void updatePoint(int memberPoint) {
         this.memberPoint = memberPoint;
     }
 }

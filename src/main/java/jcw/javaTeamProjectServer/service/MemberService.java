@@ -54,11 +54,9 @@ public class MemberService {
     public void updatePoint(final PointDto pointDto) {
         Optional<Member> optionalMember = memberRepository.findById(pointDto.getMemberKey());
         if (optionalMember.isPresent()) {
-            Member findMember = optionalMember.get();
-            Member member = Member.builder()
-                    .memberKey(pointDto.getMemberKey())
-                    .memberPoint(findMember.getMemberPoint() + pointDto.getPoint())
-                    .build();
+            Member member = optionalMember.get();
+            member.updatePoint(member.getMemberPoint() + pointDto.getPoint());
+
             memberRepository.save(member);
         } else {
             throw new IllegalArgumentException("optionalMember is null");

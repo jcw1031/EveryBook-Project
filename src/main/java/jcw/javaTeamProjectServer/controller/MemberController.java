@@ -1,5 +1,6 @@
 package jcw.javaTeamProjectServer.controller;
 
+import jcw.javaTeamProjectServer.dto.PointDto;
 import jcw.javaTeamProjectServer.entity.Member;
 import jcw.javaTeamProjectServer.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -53,5 +54,6 @@ public class MemberController {
     public List<Member> memberList() {
         return memberService.memberList();
     }
+
 
 }
