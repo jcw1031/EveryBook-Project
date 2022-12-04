@@ -17,20 +17,11 @@ public class BookService {
 
     private final MemberService memberService;
     private final BookRepository bookRepository;
-    private final ItemRepository itemRepository;
 
     public Book booking(final Book book) {
-        Optional<Item> optionalItem = itemRepository.findById(book.getItemKey());
-        Item item;
-        if (optionalItem.isPresent()) {
-            item = optionalItem.get();
-        } else {
-            throw new IllegalArgumentException("존재하지 않는 상품입니다.");
-        }
-
         PointDto pointDto = PointDto.builder()
                 .memberKey(book.getMemberKey())
-                .point((int) (item.getItemPrice() * 0.05))
+                .point((int) (book.getBookPrice() * 0.05))
                 .build();
 
         memberService.updatePoint(pointDto);
