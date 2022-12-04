@@ -21,9 +21,10 @@ public class BookService {
     public Book booking(final Book book) {
         PointDto pointDto = PointDto.builder()
                 .memberKey(book.getMemberKey())
-                .point((int) (book.getBookPrice() * 0.05))
+                .point((int) (book.getBookPrice() * 0.95))
                 .build();
 
+        pointDto.reducePoint();
         memberService.updatePoint(pointDto);
 
         return bookRepository.save(book);
@@ -42,9 +43,8 @@ public class BookService {
 
             PointDto pointDto = PointDto.builder()
                     .memberKey(book.getMemberKey())
-                    .point((int) (bookPrice * 0.05))
+                    .point((int) (bookPrice * 0.95))
                     .build();
-            pointDto.reducePoint();
 
             memberService.updatePoint(pointDto);
         }
