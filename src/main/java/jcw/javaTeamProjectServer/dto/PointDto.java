@@ -14,4 +14,10 @@ public class PointDto {
         this.memberKey = memberKey;
         this.point = point;
     }
+
+    public void setUse() {
+        if (this.point > 0) {
+            this.point = -this.point;
+        }
+    }
 }
