@@ -30,7 +30,7 @@ public class MemberController {
     /**
      * 로그인
      */
-    @GetMapping("/signin/{id}")
+    @GetMapping("/login/{id}")
     public Member login(@PathVariable("id") final String id, @RequestParam("password") final String password) {
         Optional<Member> member = memberService.findByMemberId(id);
         if (member.isPresent()) {
