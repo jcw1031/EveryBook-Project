@@ -28,9 +28,17 @@ public class MemberService {
         log.info("member in validate = {}", member);
         Optional<Member> optionalUser = memberRepository.findByMemberId(member.getMemberId());
         if (optionalUser.isPresent()) {
-            throw new IllegalStateException("이미 존재하는 이메일입니다.");
+            throw new IllegalStateException("이미 존재하는 아이다입니다.");
         } else {
-            return new Member(0L, member.getMemberId(), member.getMemberPassword(), member.getMemberName(), member.getMemberPhone(), member.getMemberAge(), 5000);
+//            return new Member(0L, member.getMemberId(), member.getMemberPassword(), member.getMemberName(), member.getMemberPhone(), member.getMemberAge(), 5000);
+            return Member.builder()
+                    .memberId(member.getMemberId())
+                    .memberPassword(member.getMemberPassword())
+                    .memberName(member.getMemberName())
+                    .memberPhone(member.getMemberPhone())
+                    .memberAge(member.getMemberAge())
+                    .memberPoint(5000)
+                    .build();
         }
     }
 
