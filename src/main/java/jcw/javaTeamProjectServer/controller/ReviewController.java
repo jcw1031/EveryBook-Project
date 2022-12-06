@@ -1,6 +1,6 @@
 package jcw.javaTeamProjectServer.controller;
 
-import jcw.javaTeamProjectServer.dto.ReviewListDto;
+import jcw.javaTeamProjectServer.dto.ReviewListDTO;
 import jcw.javaTeamProjectServer.entity.Review;
 import jcw.javaTeamProjectServer.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class ReviewController {
     }
 
     @GetMapping("/item/{item}")
-    public List<ReviewListDto> reviewByItem(@PathVariable("item") final Long itemKey) {
+    public List<ReviewListDTO> reviewByItem(@PathVariable("item") final Long itemKey) {
         return reviewService.reviewListByItem(itemKey);
     }
 

@@ -1,7 +1,7 @@
 package jcw.javaTeamProjectServer.service;
 
-import jcw.javaTeamProjectServer.dto.ReviewListDto;
-import jcw.javaTeamProjectServer.dto.UpdateAvgRatingDto;
+import jcw.javaTeamProjectServer.dto.ReviewListDTO;
+import jcw.javaTeamProjectServer.dto.UpdateAvgRatingDTO;
 import jcw.javaTeamProjectServer.entity.Review;
 import jcw.javaTeamProjectServer.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +29,12 @@ public class ReviewService {
     public void write(final Review review) {
         review.setReviewDate(LocalDate.now().toString());
         reviewRepository.save(review);
-        UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(review.getItemKey()
+        UpdateAvgRatingDTO avgRatingDto = new UpdateAvgRatingDTO(review.getItemKey()
                 , reviewRepository.avgRating(review.getItemKey()));
         itemService.updateAvgRating(avgRatingDto);
     }
 
-    public List<ReviewListDto> reviewListByItem(Long itemKey) {
+    public List<ReviewListDTO> reviewListByItem(Long itemKey) {
         return reviewRepository.findByItemKey(itemKey);
     }
 
@@ -50,7 +50,7 @@ public class ReviewService {
             Long itemKey = review.getItemKey();
             reviewRepository.delete(review);
             log.info("review 삭제 성공");
-            UpdateAvgRatingDto avgRatingDto = new UpdateAvgRatingDto(itemKey
+            UpdateAvgRatingDTO avgRatingDto = new UpdateAvgRatingDTO(itemKey
                     , reviewRepository.avgRating(itemKey));
             if (avgRatingDto.getAvgRating() == null) {
                 avgRatingDto.setAvgRating(0.0);

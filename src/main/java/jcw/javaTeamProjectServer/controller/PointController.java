@@ -1,6 +1,6 @@
 package jcw.javaTeamProjectServer.controller;
 
-import jcw.javaTeamProjectServer.dto.PointDto;
+import jcw.javaTeamProjectServer.dto.PointDTO;
 import jcw.javaTeamProjectServer.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,12 +16,12 @@ public class PointController {
     private final MemberService memberService;
 
     @PutMapping("/add")
-    public void addPoint(@RequestBody PointDto pointDto) {
+    public void addPoint(@RequestBody PointDTO pointDto) {
         memberService.updatePoint(pointDto);
     }
 
     @PutMapping("/use")
-    public void usePoint(@RequestBody PointDto pointDto) {
+    public void usePoint(@RequestBody PointDTO pointDto) {
         pointDto.reducePoint();
         memberService.updatePoint(pointDto);
     }

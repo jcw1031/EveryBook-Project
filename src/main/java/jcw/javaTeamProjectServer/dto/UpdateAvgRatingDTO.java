@@ -6,7 +6,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateAvgRatingDto {
+public class UpdateAvgRatingDTO {
     private Long itemKey;
     private Double avgRating;
 }

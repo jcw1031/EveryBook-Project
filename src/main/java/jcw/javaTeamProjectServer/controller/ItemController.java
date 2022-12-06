@@ -1,6 +1,6 @@
 package jcw.javaTeamProjectServer.controller;
 
-import jcw.javaTeamProjectServer.dto.ItemListDto;
+import jcw.javaTeamProjectServer.dto.ItemListDTO;
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class ItemController {
      * 상품 카테고리별 리스트
      */
     @GetMapping("/category/{category}")
-    public List<ItemListDto> findByCategory(@PathVariable("category") final String category) {
+    public List<ItemListDTO> findByCategory(@PathVariable("category") final String category) {
         log.info("category");
         return itemService.findByCategory(category);
     }
@@ -49,7 +49,7 @@ public class ItemController {
      * 상품 리스트
      */
     @GetMapping("/list")
-    public List<ItemListDto> itemList() {
+    public List<ItemListDTO> itemList() {
         return itemService.itemList();
     }
 
@@ -57,7 +57,7 @@ public class ItemController {
      * 이름을 통한 상품 검색
      */
     @GetMapping("/name/{name}")
-    public List<ItemListDto> findByName(@PathVariable("name") final String name) {
+    public List<ItemListDTO> findByName(@PathVariable("name") final String name) {
         log.info("name = {}", name);
         return itemService.findByName(name);
     }

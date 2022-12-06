@@ -1,6 +1,6 @@
 package jcw.javaTeamProjectServer.service;
 
-import jcw.javaTeamProjectServer.dto.PointDto;
+import jcw.javaTeamProjectServer.dto.PointDTO;
 import jcw.javaTeamProjectServer.entity.Member;
 import jcw.javaTeamProjectServer.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -58,7 +58,7 @@ public class MemberService {
      * @param pointDto
      */
     @Transactional
-    public void updatePoint(final PointDto pointDto) {
+    public void updatePoint(final PointDTO pointDto) {
         Optional<Member> optionalMember = memberRepository.findById(pointDto.getMemberKey());
         if (optionalMember.isPresent()) {
             Member member = optionalMember.get();

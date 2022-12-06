@@ -1,10 +1,9 @@
 package jcw.javaTeamProjectServer.service;
 
-import jcw.javaTeamProjectServer.dto.ItemListDto;
-import jcw.javaTeamProjectServer.dto.UpdateAvgRatingDto;
+import jcw.javaTeamProjectServer.dto.ItemListDTO;
+import jcw.javaTeamProjectServer.dto.UpdateAvgRatingDTO;
 import jcw.javaTeamProjectServer.entity.Item;
 import jcw.javaTeamProjectServer.repository.ItemRepository;
-import jcw.javaTeamProjectServer.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +21,18 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public List<ItemListDto> itemList() {
+    public List<ItemListDTO> itemList() {
         List<Item> list = itemRepository.findAll();
-        List<ItemListDto> dtoList = new ArrayList<>();
+        List<ItemListDTO> dtoList = new ArrayList<>();
         for (Item item : list) {
             dtoList.add(convertDto(item));
         }
         return dtoList;
     }
 
-    public List<ItemListDto> findByName(final String name) {
+    public List<ItemListDTO> findByName(final String name) {
         List<Item> list = itemRepository.findByItemNameContainingIgnoreCase(name);
-        List<ItemListDto> dtoList = new ArrayList<>();
+        List<ItemListDTO> dtoList = new ArrayList<>();
 
         for (Item item : list) {
             dtoList.add(convertDto(item));
@@ -41,9 +40,9 @@ public class ItemService {
         return dtoList;
     }
 
-    public List<ItemListDto> findByCategory(final String category) {
+    public List<ItemListDTO> findByCategory(final String category) {
         List<Item> list = itemRepository.findByItemCategory(category);
-        List<ItemListDto> dtoList = new ArrayList<>();
+        List<ItemListDTO> dtoList = new ArrayList<>();
 
         for (Item item : list) {
             dtoList.add(convertDto(item));
@@ -55,7 +54,7 @@ public class ItemService {
         return itemRepository.findById(id);
     }
 
-    public void updateAvgRating(final UpdateAvgRatingDto avgRatingDto) {
+    public void updateAvgRating(final UpdateAvgRatingDTO avgRatingDto) {
         Optional<Item> optionalItem = itemRepository.findById(avgRatingDto.getItemKey());
         Item item = optionalItem.get();
         item.setAvgRating(avgRatingDto.getAvgRating());
@@ -65,8 +64,8 @@ public class ItemService {
     /**
      * Item -> ItemListDto
      */
-    ItemListDto convertDto(final Item item) {
-        return ItemListDto.builder()
+    ItemListDTO convertDto(final Item item) {
+        return ItemListDTO.builder()
                 .itemKey(item.getItemKey())
                 .itemName(item.getItemName())
                 .itemAddress(item.getItemAddress())

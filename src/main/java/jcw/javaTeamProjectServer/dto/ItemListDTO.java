@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemListDto {
+public class ItemListDTO {
     private Long itemKey;
     private String itemName;
     private String itemCategory;

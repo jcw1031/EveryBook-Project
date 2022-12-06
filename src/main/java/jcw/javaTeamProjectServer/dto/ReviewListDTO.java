@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ReviewListDto {
+public class ReviewListDTO {
     private Long reviewKey;
     private String reviewBody;
     private int reviewStar;

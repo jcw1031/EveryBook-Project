@@ -1,10 +1,10 @@
 package jcw.javaTeamProjectServer.service;
 
-import jcw.javaTeamProjectServer.dto.PointDto;
+import jcw.javaTeamProjectServer.dto.PointDTO;
 import jcw.javaTeamProjectServer.entity.Book;
 import jcw.javaTeamProjectServer.entity.Item;
+import jcw.javaTeamProjectServer.entity.Member;
 import jcw.javaTeamProjectServer.repository.BookRepository;
-import jcw.javaTeamProjectServer.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +16,26 @@ import java.util.Optional;
 public class BookService {
 
     private final MemberService memberService;
+    private final ItemService itemService;
     private final BookRepository bookRepository;
 
     public Book booking(final Book book) {
-        PointDto pointDto = PointDto.builder()
-                .memberKey(book.getMemberKey())
-                .point((int) (book.getBookPrice() * 0.95))
-                .build();
+        Optional<Member> optionalMember = memberService.findById(book.getMemberKey());
+        Optional<Item> optionalItem = itemService.findById(book.getItemKey());
 
-        pointDto.reducePoint();
-        memberService.updatePoint(pointDto);
+        if (optionalMember.isPresent() && optionalItem.isPresent()) {
+            PointDTO pointDto = PointDTO.builder()
+                    .memberKey(book.getMemberKey())
+                    .point((int) (book.getBookPrice() * 0.95))
+                    .build();
 
-        return bookRepository.save(book);
+            pointDto.reducePoint();
+            memberService.updatePoint(pointDto);
+
+            return bookRepository.save(book);
+        } else {
+            throw new IllegalArgumentException("Booking Fail");
+        }
     }
 
     public List<Book> findByMemberId(final Long memberId) {
@@ -41,7 +49,7 @@ public class BookService {
             int bookPrice = book.getBookPrice();
             bookRepository.delete(book);
 
-            PointDto pointDto = PointDto.builder()
+            PointDTO pointDto = PointDTO.builder()
                     .memberKey(book.getMemberKey())
                     .point((int) (bookPrice * 0.95))
                     .build();

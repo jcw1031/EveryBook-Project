@@ -5,12 +5,12 @@ import lombok.*;
 @Getter
 @ToString
 @NoArgsConstructor
-public class PointDto {
+public class PointDTO {
     private Long memberKey;
     private int point;
 
     @Builder
-    public PointDto(Long memberKey, int point) {
+    public PointDTO(Long memberKey, int point) {
         this.memberKey = memberKey;
         this.point = point;
     }
